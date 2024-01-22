@@ -1,0 +1,13 @@
+# ---> Everforest color scheme for i3wm
+
+# border | background | title | split_indicator | child_border
+
+client.focused              #7FBBB3 #7FBBB3 #323D43 #7FBBB3 #7FBBB3
+client.focused_inactive     #D8CACC #323D43 #D8CACC #323D43 #D8CACC
+client.unfocused            #323D43 #323D43 #D8CAAC #D699B6 #323D43
+client.urgent               #E68183 #323D43 #323D43 #D8CAAC #E68183
+client.placeholder          #000000 #0c0c0c #ffffff #000000 #0c0c0c
+
+client.background           #ffffff
+
+# ---> https://github.com/sainnhe/everforest

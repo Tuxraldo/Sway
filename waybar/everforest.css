@@ -1,0 +1,12 @@
+/* Everforest color scheme for sway */
+
+@define-color background #323D43;
+@define-color foreground #D8CACC;
+@define-color icon #D699B6;
+@define-color cmus #DBBC7F;
+@define-color sep #545761;
+@define-color wp #7FBBB3;
+@define-color hl #E68183;
+@define-color mod #83C092;
+
+/* https://github.com/sainnhe/everforest */

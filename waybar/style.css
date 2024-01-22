@@ -1,0 +1,73 @@
+/* Color scheme */
+@import url("./everforest.css");
+
+* {
+    font-family: JetBrainsMono NF; 
+    font-size: 12px;
+}
+
+window#waybar {
+      background-color: @background; 
+      border-bottom: 0px solid @background;
+      border-bottom: none;
+      color: @foreground;
+      transition-property: background-color;
+      transition-duration: .5s;
+}
+
+#workspaces {
+  margin: 0 0px;
+  color: @background;
+}
+
+#workspaces button {
+  margin: 0px 0;
+  padding: 0 6px;
+}
+
+#workspaces button.visible {
+}
+
+#workspaces button.focused {
+  border-radius: 0px;
+  background-color: @wp;
+  color: @background;
+}
+
+#workspaces button.urgent {
+  border-radius: 0px;
+}
+
+#workspaces button.urgent * {
+  color: @hl;
+}
+
+#clock {
+    background-color: @background;
+}
+
+#battery {
+    background-color: @background;
+}
+
+#battery.charging, #battery.plugged {
+    background-color: @background;
+}
+
+#network {
+    background-color: @background;
+}
+
+#network.disconnected {
+    background-color: @background;
+    color: @hl;
+}
+
+#pulseaudio {
+    background-color: @background;
+}
+
+#pulseaudio.muted {
+    background-color: @background;
+    color: @hl;
+}

@@ -1,0 +1,26 @@
+[colors]
+ alpha=0.95
+ background=3F3F3F
+ foreground=DCDCDC
+# flash=7f7f00
+# flash-alpha=0.5
+
+## Normal/regular colors (color palette 0-7)
+ regular0=3F3F3F  # black
+ regular1=705050  # red
+ regular2=60B48A  # green
+ regular3=DFAF8F  # yellow
+ regular4=9AB8D7  # blue
+ regular5=DC8CC3  # magenta
+ regular6=8CD0D3  # cyan
+ regular7=DCDCDC  # white
+
+## Bright colors (color palette 8-15)
+ bright0=709080   # bright black
+ bright1=DCA3A3   # bright red
+ bright2=72D5A3   # bright green
+ bright3=F0DFAF   # bright yellow
+ bright4=94BFF3   # bright blue
+ bright5=EC93D3   # bright magenta
+ bright6=93E0E3   # bright cyan
+ bright7=FFFFFF   # bright white
