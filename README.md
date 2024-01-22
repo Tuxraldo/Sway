@@ -1,2 +1,1 @@
-# Sway
-Minhas configurações atuais do Sway
+[img]https://i.imgur.com/65EQrgr.png[/img]
