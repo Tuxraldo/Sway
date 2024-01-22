@@ -46,7 +46,7 @@ function keys {
   local keys=$(cat /sys/class/leds/input15\:\:capslock/brightness)
 
   if [ "$keys" == 1 ]; then
-   local json='{ "full_text": " 󰌎 CAPS LOCK ", "color": "#E68183" }'
+   local json='{ "full_text": " 󰌎 CAPS LOCK ", "color": "#E68183", "background": "#E68183" }'
     json_array=$(update_holder holder__keys "$json")
   else
     json_array=$(remove_holder holder__keys)
