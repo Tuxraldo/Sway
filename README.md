@@ -1,1 +1,2 @@
-[img]https://i.imgur.com/65EQrgr.png[/img]
+[[img]https://i.imgur.com/65EQrgr.png[/img]
+](https://i.imgur.com/65EQrgr.png)https://i.imgur.com/65EQrgr.png
