@@ -13,7 +13,6 @@
 sort=-time
 layer=overlay
 background-color=#323D43
-#width=300
 width=270
 height=110
 border-size=2
