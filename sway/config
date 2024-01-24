@@ -10,13 +10,12 @@
 #                                               |___/ 
 #
 #   Criado por Tuxraldo
-#   Github: https://github.com/Tuxraldo/sway
+#   Github: https://github.com/Tuxraldo/Sway
 #
 #-------------------------------------------------------------------------------------------------#
 
 # Variáveis --------------------------------------------------------------------------------------#
 set $term foot
-set $term2 xfce4-terminal
 set $mod Mod4
 
 # Orientação Padrão ------------------------------------------------------------------------------#
@@ -94,7 +93,6 @@ bindsym $mod+e layout toggle tabbed stacking split
 
 # split horizontal/vertical ----------------------------------------------------------------------#
 bindsym $mod+v split toggle
-#bindsym $mod+v splitt
 
 # Mover workspace anterior/próximo ---------------------------------------------------------------#
 bindsym control+mod1+Right workspace next
@@ -282,20 +280,14 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Configurações waybar -----------------------------------------------------------------#
-#bar {
-#    swaybar_command waybar
-#    position top
-#}
-
-# Configurações i3bar + i3status|i3blocks ----------------------------------------------#
-# se for utilizar outro painel, como a polybar/waybar, comente essa função
+# Configurações i3bar + i3status -------------------------------------------------------#
+# se for utilizar outro painel, como a waybar, comente essa função.
 bar {
        status_command ~/.config/i3status/config | ~/.config/sway/my_status_command
        position top
        height 24
        font pango:JetBrainsMono NF 9.3
-	   separator_symbol "|"
+       separator_symbol "|"
        workspace_buttons yes
        tray_output none
 
@@ -305,14 +297,7 @@ bar {
 	    #separator  #5B6368
         separator #465055
  
-       ## Dark_Pastels			Contorno-Interior-Número/Nome
-       #focused_workspace	    #DFAF8F #DFAF8F #3F3F3F
-       #active_workspace	    #DFAF8F #DFAF8F #3F3F3F
-       #inactive_workspace	    #3F3F3F #3F3F3F #DCDCDC
-       #urgent_workspace	    #EC93D3 #EC93D3 #3F3F3F
-       #binding_mode		    #93E0E3 #93E0E3 #3F3F3F
-
-       ## everforest			Contorno-Interior-Número/Nome
+        # everforest			Contorno-Interior-Número/Nome
        focused_workspace	    #7FBBB3 #7FBBB3 #323D43 
        active_workspace	        #7FBBB3 #7FBBB3 #323D43 
        inactive_workspace	    #323D43 #323D43 #DCDCDC
@@ -326,8 +311,6 @@ bar {
 exec --no-startup-id psensor
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id mako
-#exec --no-startup-id waybar
-#exec --no-startup-id waybar -s ~/.config/waybar/style-dwm.css
 
 # Atalhos para programas ---------------------------------------------------------------#
 
@@ -367,10 +350,6 @@ bindsym $mod+F5 exec --no-startup-id cmus-remote -n
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% 
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
-
-# Brilho da tela -----------------------------------------------------------------------#
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
 # Color scheme padrão ------------------------------------------------------------------#
 include $HOME/.config/sway/ghost.theme
