@@ -52,23 +52,23 @@ function keys {
     json_array=$(remove_holder holder__keys)
   fi
 }
-function i3_layout {
+function sway_layout {
 
   local layout=$(swaymsg -t get_tree | jq --raw-output 'recurse(.nodes[]; .nodes !=null) | select(.nodes[].focused).layout')
   if [ "$layout" == splith ]; then
     local json='{ "full_text": "[horizontal]", "color": "#D699B6" }'
-    json_array=$(update_holder holder__i3_layout "$json")
+    json_array=$(update_holder holder__sway_layout "$json")
   elif [ "$layout" == splitv ]; then
     local json='{ "full_text": "[vertical]", "color": "#E68183" }'
-    json_array=$(update_holder holder__i3_layout "$json")
+    json_array=$(update_holder holder__sway_layout "$json")
   elif [ "$layout" == tabbed ]; then
     local json='{ "full_text": "[tabbed]", "color": "#7FBBB3" }'
-    json_array=$(update_holder holder__i3_layout "$json")
+    json_array=$(update_holder holder__sway_layout "$json")
   elif [ "$layout" == stacked ]; then
     local json='{ "full_text": "[stacked]", "color": "#DBBC7F" }'
-    json_array=$(update_holder holder__i3_layout "$json")
+    json_array=$(update_holder holder__sway_layout "$json")
   else
-    json_array=$(remove_holder holder__i3_layout)
+    json_array=$(remove_holder holder__sway_layout)
   fi
 }
 
@@ -103,7 +103,7 @@ do
   json_array="$(echo $line | sed -e 's/^,//')"
   cmus
   scratchpad
-  i3_layout
+  sway_layout
   keys
   echo ",$json_array"
 done)
