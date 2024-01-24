@@ -20,7 +20,7 @@ general {
 order += "tztime holder__keys"
 order += "tztime holder__cmus"
 order += "tztime holder__scratchpad"
-order += "tztime holder__i3_layout"
+order += "tztime holder__sway_layout"
 order += "volume master"
 order += "battery all"
 order += "wireless _first_"
