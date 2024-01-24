@@ -213,10 +213,46 @@ for_window [class="^Mednaffe|mGBA$"] focus
 assign [app_id="^psensor|virt-manager$"] $ws10
 for_window [app_id="^psensor$|virt-manager"] focus ; layout tabbed
 
-## Window rules -------------------------------------------------------------------------#
+# Window rules -------------------------------------------------------------------------#
 for_window [app_id="Galculator" instance="galculator"] floating enable
 for_window [title="File Operation Progress"] floating enable
 for_window [app_id="deadbeef"] floating enable, resize set 1300 690, move position center
+
+# sway marks (goto) ----------------------------------------------------------------#
+# window switch setting
+set $mode_set_switch_window "mark: [0]-[9]"
+mode $mode_set_switch_window {
+    bindsym 1 mark --toggle 1; mode "default"
+    bindsym 2 mark --toggle 2; mode "default"
+    bindsym 3 mark --toggle 3; mode "default"
+    bindsym 4 mark --toggle 4; mode "default"
+    bindsym 5 mark --toggle 5; mode "default"
+    bindsym 6 mark --toggle 6; mode "default"
+    bindsym 7 mark --toggle 7; mode "default"
+    bindsym 8 mark --toggle 8; mode "default"
+    bindsym 9 mark --toggle 9; mode "default"
+    bindsym 0 mark --toggle 0; mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym Control+period mode $mode_set_switch_window
+set $mode_switch_window "goto: [0]-[9]"
+mode $mode_switch_window {
+    bindsym 1 [con_mark="1"] focus; mode "default"
+    bindsym 2 [con_mark="2"] focus; mode "default"
+    bindsym 3 [con_mark="3"] focus; mode "default"
+    bindsym 4 [con_mark="4"] focus; mode "default"
+    bindsym 5 [con_mark="5"] focus; mode "default"
+    bindsym 6 [con_mark="6"] focus; mode "default"
+    bindsym 7 [con_mark="7"] focus; mode "default"
+    bindsym 8 [con_mark="8"] focus; mode "default"
+    bindsym 9 [con_mark="9"] focus; mode "default"
+    bindsym 0 [con_mark="0"] focus; mode "default"
+    bindsym t mode $mode_set_switch_window
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym Control+comma mode $mode_switch_window
 
 # Reload, restart and exit -------------------------------------------------------------#
 bindsym $mod+Shift+r reload
