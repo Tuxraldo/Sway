@@ -45,7 +45,7 @@ tztime holder__keys {
 }
 
 tztime holder__i3_layout {
-       format = "holder__i3_layout"
+       format = "holder__sway_layout"
 }
 
 wireless _first_ {
