@@ -130,7 +130,7 @@ bindsym $mod+bracketleft split vertical, focus right, move left
 # Um container em modo normal, dois em modo tabbed
 bindsym $mod+dead_acute focus next, split horizontal, layout tabbed, focus next, move left 
 # Reseta as configurações de layout para o padrão (definido na opção 'default orientation')
-bindsym $mod+dead_tilde layout toggle kill # kill command resets the split
+bindsym $mod+dead_tilde layout toggle
 
 # Defnições de áreas de trabalho -----------------------------------------------------------------#
 set $ws1 "1: "
