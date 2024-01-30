@@ -1,73 +1,99 @@
-/* Color scheme */
-@import url("./everforest.css");
-
 * {
-    font-family: JetBrainsMono NF; 
+    font-family: "JetBrainsMono NF";
     font-size: 12px;
 }
 
-window#waybar {
-      background-color: @background; 
-      border-bottom: 0px solid @background;
-      border-bottom: none;
-      color: @foreground;
-      transition-property: background-color;
-      transition-duration: .5s;
+/* Color scheme */
+@import url("./everforest.css");
+
+window#waybar { 
+    background-color: @wp; 
+    color: @foreground;    
+    border-bottom: 0px solid @background;
+}
+
+.modules-left {
+	background-color: @background;
+	padding: 0px 0px 0px 0px;
+}
+
+.modules-right {
+	background-color: @background;
+	padding: 0px 0px 0px 0px;
+}
+
+#scratchpad {
+	background-color: @background;
+	color: @scratch;
+	padding: 0px 0px 0px 0px;
 }
 
 #workspaces {
-  margin: 0 0px;
-  color: @background;
-}
-
-#workspaces button {
-  margin: 0px 0;
-  padding: 0 6px;
-}
-
-#workspaces button.visible {
-}
-
-#workspaces button.focused {
-  border-radius: 0px;
-  background-color: @wp;
-  color: @background;
+    margin: 0 0px;
+    color: @background;
+	padding: 0px 6px 0px 0px;
 }
 
 #workspaces button.urgent {
-  border-radius: 0px;
+    background-color: @hl;
 }
 
-#workspaces button.urgent * {
-  color: @hl;
+#workspaces button {
+	color: @foreground;
+    padding: 0 6px 0px 4px;
+    margin: 0px 0;
+    border-radius: 0px;
 }
 
-#clock {
-    background-color: @background;
+#workspaces button.focused { 
+	padding: 0px 6px 0px 6px; 
+	background-color: @wp;
+	color: @background;
 }
 
-#battery {
-    background-color: @background;
+#workspaces button:hover {
+    color: #98c8c2;
 }
 
-#battery.charging, #battery.plugged {
-    background-color: @background;
+#window {
+	 color: @background;
+	 background-color: @wp;
+     padding: 0px 10px 0px 10px;
 }
 
-#network {
-    background-color: @background;
+window#waybar.empty #window {
+	background-color: transparent;
+	color: transparent;
+}
+
+window#waybar.empty {
+	background-color: @background;
+}
+
+#network, #pulseudio, #battery, #clock {
+    padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+  }
+
+#tray{
+   padding: 0px 8px 0px 5px;
+   margin: 0px 5px 0px 5px;
+}
+
+#battery.critical {
+   color: @hl;
 }
 
 #network.disconnected {
-    background-color: @background;
     color: @hl;
 }
 
-#pulseaudio {
-    background-color: @background;
+#custom-separator {
+  color: @background;
+  margin: 0 5px;
 }
 
-#pulseaudio.muted {
-    background-color: @background;
-    color: @hl;
+#custom-cmus {
+  background-color: @background;
+  color: @cmus;
 }

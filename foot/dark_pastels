@@ -2,8 +2,6 @@
  alpha=0.95
  background=3F3F3F
  foreground=DCDCDC
-# flash=7f7f00
-# flash-alpha=0.5
 
 ## Normal/regular colors (color palette 0-7)
  regular0=3F3F3F  # black

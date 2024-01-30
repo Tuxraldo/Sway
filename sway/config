@@ -280,37 +280,37 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Configurações i3bar + i3status -------------------------------------------------------#
+# Configurações swaybar + i3status -----------------------------------------------------#
 # se for utilizar outro painel, como a waybar, comente essa função.
-bar {
-       status_command ~/.config/i3status/config | ~/.config/sway/my_status_command
-       position top
-       height 24
-       font pango:JetBrainsMono NF 9.3
-       separator_symbol "|"
-       workspace_buttons yes
-       tray_output none
-
-       colors {
-	    background #323D43
-	    statusline #D8CACC
-	    #separator  #5B6368
-        separator #465055
- 
-        # everforest			Contorno-Interior-Número/Nome
-       focused_workspace	    #7FBBB3 #7FBBB3 #323D43 
-       active_workspace	        #7FBBB3 #7FBBB3 #323D43 
-       inactive_workspace	    #323D43 #323D43 #DCDCDC
-       urgent_workspace	        #E68183 #E68183 #323D43 
-       binding_mode		        #93E0E3 #93E0E3 #323D43 
-    }
-
-}
+#bar {
+#       status_command ~/.config/i3status/config | ~/.config/sway/my_status_command
+#       position top
+#       height 24
+#       font pango:JetBrainsMono NF 9.3
+#       separator_symbol "|"
+#       workspace_buttons yes
+#       tray_output none
+#
+#       colors {
+#	    background #323D43
+#	    statusline #D8CACC
+#        separator #465055
+# 
+#        # everforest			Contorno-Interior-Número/Nome
+#       focused_workspace	    #7FBBB3 #7FBBB3 #323D43 
+#       active_workspace	        #7FBBB3 #7FBBB3 #323D43 
+#       inactive_workspace	    #323D43 #323D43 #DCDCDC
+#       urgent_workspace	        #E68183 #E68183 #323D43 
+#       binding_mode		        #93E0E3 #93E0E3 #323D43 
+#    }
+#
+#}
 
 # Autostart ----------------------------------------------------------------------------#
 exec --no-startup-id psensor
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id mako
+exec --no-startup-id waybar
 
 # Atalhos para programas ---------------------------------------------------------------#
 

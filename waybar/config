@@ -4,15 +4,16 @@
     "height": 24,
     //"bar_id": "bar-0", // for toggle bar
     //"ipc": true, // for toggle bar
-    "spacing": 1, // Gaps between modules (default 14)
+    "spacing": 1, // Gaps between modules
 
 
-    "modules-left": ["sway/workspaces", "custom/separator", "custom/layout", "custom/separator", "sway/scratchpad", "custom/separator", "sway/window"],
+    "modules-left": ["sway/workspaces", "custom/layout", "sway/window"],
     //"modules-center": [],
-    "modules-right": ["custom/cmus", "custom/separator", "pulseaudio", "custom/separator", "battery", "custom/separator", "clock"],
+    "modules-right": ["custom/cmus", "sway/scratchpad", "custom/separator", "pulseaudio", "custom/separator", "battery", "custom/separator", "clock"],
 
     "custom/cmus": {
-	"format": "<span color=\"#DBBC7F\">{}</span>",
+	//"format": "<span color=\"#DBBC7F\">{}</span>",
+	"format": "{}",
 	//"max-length": 15,
 	"interval": 1,
 	"exec": "~/.config/waybar/cmus.sh",
@@ -33,7 +34,7 @@
 },
 
     "custom/layout": {
-        "format": "<span color=\"#D699B6\">{}</span>",
+        "format": "<span color=\"#D699B6\">{} </span>",
         "interval": 1,
         "exec": "~/.config/waybar/sway-layout.sh"
     },
@@ -46,7 +47,7 @@
     "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
-        "format-icons": [" "],
+        "format-icons": ["  "],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
@@ -61,10 +62,11 @@
         "interval": 1,
         "format": "{:<span color=\"#D699B6\"></span> %a, %R }",
         "timezone": "America/Sao_Paulo",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%A, %d de %B }",
+        "tooltip-format": "\n<span size='11pt' font='JetBrainsMono NF'>{calendar}</span>",
+        "on-click": "foot calc",
+        //"format-alt": "{:%A, %d de %B }",
         "calendar": {
-                    "mode"          : "year",
+                    "mode"          : "mounth",
                     "mode-mon-col"  : 3,
                     "weeks-pos"     : "none",
                     "on-scroll"     : 1,
@@ -76,6 +78,13 @@
                               "today":      "<span color='#E68183'><b><u>{}</u></b></span>"
                               }
                     },
+                              "actions":  {
+                                            "on-click-right": "mode",
+                                            "on-click-forward": "tz_up",
+                                            "on-click-backward": "tz_down",
+                                            "on-scroll-up": "shift_up",
+                                            "on-scroll-down": "shift_down"
+                    }
     },
 
     "battery": {

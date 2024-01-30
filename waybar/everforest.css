@@ -1,4 +1,4 @@
-/* Everforest color scheme for sway */
+/* Everforest color scheme for waybar */
 
 @define-color background #323D43;
 @define-color foreground #D8CACC;
@@ -8,5 +8,6 @@
 @define-color wp #7FBBB3;
 @define-color hl #E68183;
 @define-color mod #83C092;
+@define-color scratch #DBBC7F;
 
 /* https://github.com/sainnhe/everforest */
