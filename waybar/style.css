@@ -31,7 +31,7 @@ window#waybar {
 #workspaces {
     margin: 0 0px;
     color: @background;
-	padding: 0px 6px 0px 0px;
+	padding: 0px 0px 0px 0px;
 }
 
 #workspaces button.urgent {
@@ -40,13 +40,13 @@ window#waybar {
 
 #workspaces button {
 	color: @foreground;
-    padding: 0 6px 0px 4px;
+    padding: 0 0px 0px 0px;
     margin: 0px 0;
     border-radius: 0px;
 }
 
 #workspaces button.focused { 
-	padding: 0px 6px 0px 6px; 
+	padding: 0px 0px 0px 0px; 
 	background-color: @wp;
 	color: @background;
 }
@@ -96,4 +96,12 @@ window#waybar.empty {
 #custom-cmus {
   background-color: @background;
   color: @cmus;
+}
+
+tooltip,
+#clock.calendar,
+#clock tooltip,
+#clock > tooltip,
+#clock {
+    background: @background;
 }

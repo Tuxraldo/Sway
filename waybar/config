@@ -4,7 +4,7 @@
     "height": 24,
     //"bar_id": "bar-0", // for toggle bar
     //"ipc": true, // for toggle bar
-    "spacing": 1, // Gaps between modules
+    "spacing": 1, // Gaps between modules (default 14)
 
 
     "modules-left": ["sway/workspaces", "custom/layout", "sway/window"],
@@ -66,7 +66,7 @@
         "on-click": "foot calc",
         //"format-alt": "{:%A, %d de %B }",
         "calendar": {
-                    "mode"          : "mounth",
+                    "mode"          : "month",
                     "mode-mon-col"  : 3,
                     "weeks-pos"     : "none",
                     "on-scroll"     : 1,

@@ -7,8 +7,8 @@ case $(swaymsg -t get_tree | jq --raw-output 'recurse(.nodes[]; .nodes !=null) |
 #  splitv) echo "[vertical]" ;;
 #  tabbed) echo "[tabbed]" ;;
 #  stacked) echo "[stacking]" ;;
-  splith) echo "[H]" ;;
-  splitv) echo "[V]" ;;
-  tabbed) echo "[T]" ;;
-  stacked) echo "[S]" ;;
+  splith) echo " [H]" ;;
+  splitv) echo " [V]" ;;
+  tabbed) echo " [T]" ;;
+  stacked) echo " [S]" ;;
 esac
