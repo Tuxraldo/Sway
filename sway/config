@@ -34,13 +34,11 @@ bindsym $mod+Shift+space floating toggle
 # Fechar a janela em foco-------------------------------------------------------------------------#
 bindsym $mod+q kill
 
-# Terminal padrão---------- ----------------------------------------------------------------------#
+# Terminal padrão --------------------------------------------------------------------------------#
 bindsym $mod+Return exec --no-startup-id $term
 
-# Terminal Alternativo ---------------------------------------------------------------------------#
-bindsym control+mod1+t exec --no-startup-id $term2
-
 # Toggle i3bar -----------------------------------------------------------------------------------#
+# funciona apenas com a swaybar
 bindsym $mod+b bar mode toggle
 
 # Mudança de foco---------------------------------------------------------------------------------#
@@ -87,8 +85,8 @@ bindsym $mod+Shift+semicolon focus child
 bindsym $mod+Shift+y move scratchpad
 bindsym $mod+y scratchpad show
 
-# Trocnado entre layouts (tile, tabbed, stacking) ------------------------------------------------#
-bindsym $mod+m layout toggle tabbed split
+# Trocando entre layouts (tile, tabbed, stacking) ------------------------------------------------#
+bindsym $mod+m layout toggle tabbed split 
 bindsym $mod+e layout toggle tabbed stacking split 
 
 # split horizontal/vertical ----------------------------------------------------------------------#
@@ -114,7 +112,7 @@ font pango: JetBrainsMono NF 7
 
 # fuzzel scripts ---------------------------------------------------------------------------------#
 bindsym $mod+a exec --no-startup-id $HOME/.local/bin/fuzzel-scripts/menus
-bindsym $mod+d exec --no-startup-id $HOME/.local/bin/fuzzel-scripts/command-menu
+bindsym $mod+d exec --no-startup-id fuzzel
 bindsym $mod+s exec --no-startup-id $HOME/.local/bin/fuzzel-scripts/mansearch
 bindsym $mod+w exec --no-startup-id $HOME/.local/bin/fuzzel-scripts/switch
 bindsym $mod+z exec --no-startup-id $HOME/.local/bin/fuzzel-scripts/sway
@@ -179,8 +177,9 @@ bindsym mod1+Shift+8 move container to workspace $ws8 ; workspace $ws8
 bindsym mod1+Shift+9 move container to workspace $ws9 ; workspace $ws9
 bindsym mod1+Shift+0 move container to workspace $ws10 ; workspace $ws10
 
-# Assign to the workspace ------------------------------------------------------------------------#
+# Assign to the workspace --------------------------------------------------------------#
 # "app_id" para wayland "class" para xwayland (X11)
+
 assign [class="firefox-esr$"] $ws1
 assign [app_id="^firefox$"] $ws2
 
@@ -190,17 +189,14 @@ for_window [app_id="xfce4-terminal"] focus
 assign [app_id="^thunar|ranger|vifm$"] $ws4
 for_window [app_id="^thunar|ranger|vifm$"] focus
 
-assign [app_id="^cmus$"] $ws5
-for_window [app_id="^cmus$"] focus
-
-assign [app_id="^deadbeef|pavucontrol$"] $ws5
-for_window [app_id="^deadbeef|pavucontrol$"] focus
+assign [app_id="^cmus|deadbeef|pavucontrol$"] $ws5
+for_window [app_id="^cmus|deadbeef|pavucontrol$"] focus
 
 assign [class="^Gimp|Gimp-2.10|Lxappearance$"] $ws7
 for_window [class="^Gimp|Gimp-2.10|Lxappearance$"] focus
 
-assign [app_id="^libreoffice-startcenter|libreoffice-startcenter|libreoffice-writer|Soffice$"] $ws7
-for_window [app_id="^libreoffice-startcenter$"] focus
+assign [app_id="^libreoffice-startcenter|libreoffice-startcenter|libreoffice-writer|Soffice|evince$"] $ws7
+for_window [app_id="^libreoffice-startcenter|evince$"] focus
 
 assign [class="^SiriKali|KeePassXC|qBittorrent|pavucontrol$"] $ws8
 for_window [class="^SiriKali|KeePassXC$"] focus ; layout tabbed
@@ -211,14 +207,18 @@ for_window [class="^Mednaffe|mGBA$"] focus
 assign [app_id="^psensor|virt-manager$"] $ws10
 for_window [app_id="^psensor$|virt-manager"] focus ; layout tabbed
 
-# Window rules -----------------------------------------------------------------------------------#
+# Window rules -------------------------------------------------------------------------#
 for_window [app_id="Galculator" instance="galculator"] floating enable
 for_window [title="File Operation Progress"] floating enable
 for_window [app_id="deadbeef"] floating enable, resize set 1300 690, move position center
 
-# sway marks (goto) ------------------------------------------------------------------------------#
+# Reload, restart and exit -------------------------------------------------------------#
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit sway' 'swaymsg exit'"
+
+# sway marks (goto) --------------------------------------------------------------------#
 # window switch setting
-set $mode_set_switch_window "mark: [0]-[9]"
+set $mode_set_switch_window "mark: [0-9]"
 mode $mode_set_switch_window {
     bindsym 1 mark --toggle 1; mode "default"
     bindsym 2 mark --toggle 2; mode "default"
@@ -234,7 +234,7 @@ mode $mode_set_switch_window {
     bindsym Escape mode "default"
 }
 bindsym Control+period mode $mode_set_switch_window
-set $mode_switch_window "goto: [0]-[9]"
+set $mode_switch_window "goto: [0-9]"
 mode $mode_switch_window {
     bindsym 1 [con_mark="1"] focus; mode "default"
     bindsym 2 [con_mark="2"] focus; mode "default"
@@ -252,11 +252,7 @@ mode $mode_switch_window {
 }
 bindsym Control+comma mode $mode_switch_window
 
-# Reload, restart and exit -----------------------------------------------------------------------#
-bindsym $mod+Shift+r reload
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-# Resizing windows -------------------------------------------------------------------------------#
+# Resizing windows ---------------------------------------------------------------------#
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -280,39 +276,16 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Configurações swaybar + i3status ---------------------------------------------------------------#
-# se for utilizar outro painel, como a waybar, comente essa função.
-#bar {
-#       status_command ~/.config/i3status/config | ~/.config/sway/my_status_command.sh
-#       position top
-#       height 24
-#       font pango:JetBrainsMono NF 9.3
-#       separator_symbol "|"
-#       workspace_buttons yes
-#       tray_output none
-#
-#       colors {
-#	    background #323D43
-#	    statusline #D8CACC
-#        separator #465055
-# 
-#        # everforest			Contorno-Interior-Número/Nome
-#       focused_workspace	    #7FBBB3 #7FBBB3 #323D43 
-#       active_workspace	        #7FBBB3 #7FBBB3 #323D43 
-#       inactive_workspace	    #323D43 #323D43 #DCDCDC
-#       urgent_workspace	        #E68183 #E68183 #323D43 
-#       binding_mode		        #93E0E3 #93E0E3 #323D43 
-#    }
-#
-#}
+# Configurações sway-bar + i3status ----------------------------------------------------#
+include $HOME/.config/sway/ghost.theme
 
-# Autostart --------------------------------------------------------------------------------------#
+# Autostart ----------------------------------------------------------------------------#
 exec --no-startup-id psensor
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id mako
 exec --no-startup-id waybar
 
-# Atalhos para programas -------------------------------------------------------------------------#
+# Atalhos para programas ---------------------------------------------------------------#
 
 # ---> TUI
 bindsym $mod+comma exec --no-startup-id $term nvim
@@ -334,10 +307,10 @@ bindsym $mod+p exec --no-startup-id keepassxc
 # ---> Encfs
 bindsym $mod+shift+p exec --no-startup-id sirikali
 
-# menus-apps script ------------------------------------------------------------------------------#
+# menus-apps script --------------------------------------------------------------------#
 bindsym $mod+i exec --no-startup-id $term "$HOME/scripts/menu/menu-apps.sh"
 
-# cmus-remote ------------------------------------------------------------------------------------# 
+# cmus-remote --------------------------------------------------------------------------# 
 bindsym $mod+c exec --no-startup-id $term -a cmus cmus
 
 bindsym $mod+F1 exec --no-startup-id cmus-remote -u
@@ -346,24 +319,25 @@ bindsym $mod+F3 exec --no-startup-id cmus-remote -v +5%
 bindsym $mod+F4 exec --no-startup-id cmus-remote -r
 bindsym $mod+F5 exec --no-startup-id cmus-remote -n
 
-# Teclas multimídia ------------------------------------------------------------------------------#
+# Teclas multimídia --------------------------------------------------------------------#
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% 
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
-# Color scheme padrão ----------------------------------------------------------------------------#
-include $HOME/.config/sway/ghost.theme
+# Brilho da tela -----------------------------------------------------------------------#
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
-# Gaps -------------------------------------------------------------------------------------------#
+# Gaps ---------------------------------------------------------------------------------#
 smart_gaps off
 gaps inner 6
 gaps outer 2
 
-# Toggle gaps ------------------------------------------------------------------------------------#
+# Toggle gaps --------------------------------------------------------------------------#
 # Requer, pelo menos, a versão 4.22 do i3
 bindsym $mod+shift+equal gaps inner all toggle 6, gaps outer all toggle 2
 
-# Imitando a sequêncai de no i3wm ----------------------------------------------------------------#
+# Imitando a sequêncai de no i3wm ------------------------------------------------------#
 # start in opposite orientation from your monitor
 # default_orientation vertical              
 # toggles split at each new window
@@ -371,7 +345,7 @@ bindsym $mod+shift+equal gaps inner all toggle 6, gaps outer all toggle 2
 # kill command resets the split
 # bindsym $mod+shift+z split toggle kill    
 
-# or input <identifier> --------------------------------------------------------------------------#
+# or input <identifier> ----------------------------------------------------------------#
 input "type:keyboard" {
     xkb_layout br
 }
@@ -379,15 +353,15 @@ input "type:keyboard" {
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'everforest-gtk'
+    gsettings set $gnome-schema gtk-theme 'Everforest-Dark-BL-LB'
     gsettings set $gnome-schema icon-theme 'Papirus'
     gsettings set $gnome-schema cursor-theme 'Qogir-white-cursors'
 }
 
-# Iniciar o numlock com o sway -------------------------------------------------------------------#
+# Iniciar o numlock com o sway ---------------------------------------------------------#
 input type:keyboard xkb_numlock enabled
 
-# Touchpad ---------------------------------------------------------------------------------------#
+# Touchpad -----------------------------------------------------------------------------#
 input type:touchpad {
     tap enabled
     natural_scroll disabled
@@ -396,5 +370,4 @@ input type:touchpad {
 
 # Set wallpaper (swaybg -i) ----------------------------------------------------------------------#
 # fill | center | stretch | tile | fit
-set $wall "~/Imagens/everforest/ghost.jpg"
-output "*" bg $wall fill
+output * bg "/home/tuxraldo/Imagens/everforest/ghost.jpg"  fill
