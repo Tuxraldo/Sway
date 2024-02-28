@@ -16,6 +16,7 @@
 
 # Variáveis --------------------------------------------------------------------------------------#
 set $term foot
+set $aterm alacritty
 set $mod Mod4
 
 # Orientação Padrão ------------------------------------------------------------------------------#
@@ -37,8 +38,10 @@ bindsym $mod+q kill
 # Terminal padrão --------------------------------------------------------------------------------#
 bindsym $mod+Return exec --no-startup-id $term
 
+# Terminal alternativo ---------------------------------------------------------------------------#
+bindsym Control+mod1+t exec --no-startup-id $aterm
+
 # Toggle i3bar -----------------------------------------------------------------------------------#
-# funciona apenas com a swaybar
 bindsym $mod+b bar mode toggle
 
 # Mudança de foco---------------------------------------------------------------------------------#
@@ -85,7 +88,7 @@ bindsym $mod+Shift+semicolon focus child
 bindsym $mod+Shift+y move scratchpad
 bindsym $mod+y scratchpad show
 
-# Trocando entre layouts (tile, tabbed, stacking) ------------------------------------------------#
+# Trocnado entre layouts (tile, tabbed, stacking) ------------------------------------------------#
 bindsym $mod+m layout toggle tabbed split 
 bindsym $mod+e layout toggle tabbed stacking split 
 
@@ -166,16 +169,16 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Move a janela e muda o foco para outra área de trabalho
-bindsym mod1+Shift+1 move container to workspace $ws1 ; workspace $ws1
-bindsym mod1+Shift+2 move container to workspace $ws2 ; workspace $ws2
-bindsym mod1+Shift+3 move container to workspace $ws3 ; workspace $ws3
-bindsym mod1+Shift+4 move container to workspace $ws4 ; workspace $ws4
-bindsym mod1+Shift+5 move container to workspace $ws5 ; workspace $ws5
-bindsym mod1+Shift+6 move container to workspace $ws6 ; workspace $ws6
-bindsym mod1+Shift+7 move container to workspace $ws7 ; workspace $ws7
-bindsym mod1+Shift+8 move container to workspace $ws8 ; workspace $ws8
-bindsym mod1+Shift+9 move container to workspace $ws9 ; workspace $ws9
-bindsym mod1+Shift+0 move container to workspace $ws10 ; workspace $ws10
+bindsym $mod+mod1+1 move container to workspace $ws1 ; workspace $ws1
+bindsym $mod+mod1+2 move container to workspace $ws2 ; workspace $ws2
+bindsym $mod+mod1+3 move container to workspace $ws3 ; workspace $ws3
+bindsym $mod+mod1+4 move container to workspace $ws4 ; workspace $ws4
+bindsym $mod+mod1+5 move container to workspace $ws5 ; workspace $ws5
+bindsym $mod+mod1+6 move container to workspace $ws6 ; workspace $ws6
+bindsym $mod+mod1+7 move container to workspace $ws7 ; workspace $ws7
+bindsym $mod+mod1+8 move container to workspace $ws8 ; workspace $ws8
+bindsym $mod+mod1+9 move container to workspace $ws9 ; workspace $ws9
+bindsym $mod+mod1+0 move container to workspace $ws10 ; workspace $ws10
 
 # Assign to the workspace --------------------------------------------------------------#
 # "app_id" para wayland "class" para xwayland (X11)
@@ -189,8 +192,16 @@ for_window [app_id="xfce4-terminal"] focus
 assign [app_id="^thunar|ranger|vifm$"] $ws4
 for_window [app_id="^thunar|ranger|vifm$"] focus
 
-assign [app_id="^cmus|deadbeef|pavucontrol$"] $ws5
-for_window [app_id="^cmus|deadbeef|pavucontrol$"] focus
+assign [app_id="^cmus$"] $ws5
+for_window [app_id="^cmus$"] focus
+
+assign [app_id="^deadbeef|pavucontrol$"] $ws5
+for_window [app_id="^deadbeef|pavucontrol$"] focus
+
+assign [app_id="^geany$"] $ws6
+for_window [app_id="^geany$"] focus
+
+assign [app_id="evince"] $ws7
 
 assign [class="^Gimp|Gimp-2.10|Lxappearance$"] $ws7
 for_window [class="^Gimp|Gimp-2.10|Lxappearance$"] focus
@@ -198,19 +209,22 @@ for_window [class="^Gimp|Gimp-2.10|Lxappearance$"] focus
 assign [app_id="^libreoffice-startcenter|libreoffice-startcenter|libreoffice-writer|Soffice|evince$"] $ws7
 for_window [app_id="^libreoffice-startcenter|evince$"] focus
 
-assign [class="^SiriKali|KeePassXC|qBittorrent|pavucontrol$"] $ws8
-for_window [class="^SiriKali|KeePassXC$"] focus ; layout tabbed
+assign [class="^VeraCrypt|KeePassXC|qBittorrent|pavucontrol$"] $ws8
+for_window [class="^VeraCrypt|KeePassXC$"] focus ; layout tabbed
 
 assign [class="^Mednaffe|mGBA$"] $ws9
 for_window [class="^Mednaffe|mGBA$"] focus
 
-assign [app_id="^psensor|virt-manager$"] $ws10
-for_window [app_id="^psensor$|virt-manager"] focus ; layout tabbed
+assign [app_id="^virt-manager$"] $ws10
+for_window [app_id="^virt-manager$"] focus ; layout tabbed
+
+for_window [app_id="psensor"] move scratchpad
 
 # Window rules -------------------------------------------------------------------------#
 for_window [app_id="Galculator" instance="galculator"] floating enable
 for_window [title="File Operation Progress"] floating enable
 for_window [app_id="deadbeef"] floating enable, resize set 1300 690, move position center
+for_window [app_id="soffice"] floating enable
 
 # Reload, restart and exit -------------------------------------------------------------#
 bindsym $mod+Shift+r reload
@@ -304,8 +318,8 @@ bindsym $mod+g exec --no-startup-id gimp
 bindsym $mod+t exec --no-startup-id thunar
 # ---> Gerenciador de senhas
 bindsym $mod+p exec --no-startup-id keepassxc
-# ---> Encfs
-bindsym $mod+shift+p exec --no-startup-id sirikali
+# ---> Veracrypt
+bindsym $mod+shift+p exec --no-startup-id veracrypt
 
 # menus-apps script --------------------------------------------------------------------#
 bindsym $mod+i exec --no-startup-id $term "$HOME/scripts/menu/menu-apps.sh"
@@ -325,8 +339,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 
 # Brilho da tela -----------------------------------------------------------------------#
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
+bindsym XF86MonBrightnessDown exec --no-startup-id light -A 10
 
 # Gaps ---------------------------------------------------------------------------------#
 smart_gaps off
@@ -339,9 +353,9 @@ bindsym $mod+shift+equal gaps inner all toggle 6, gaps outer all toggle 2
 
 # Imitando a sequêncai de no i3wm ------------------------------------------------------#
 # start in opposite orientation from your monitor
-# default_orientation vertical              
+#default_orientation vertical              
 # toggles split at each new window
-# for_window [app_id=".*"] split toggle      
+#for_window [app_id=".*"] split toggle      
 # kill command resets the split
 # bindsym $mod+shift+z split toggle kill    
 
@@ -350,6 +364,7 @@ input "type:keyboard" {
     xkb_layout br
 }
 
+# Definições de tema gtk, ponteiro e ícones --------------------------------------------#
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {

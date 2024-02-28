@@ -1,140 +1,142 @@
 {
-	//"layer": "top",	
-	"position": "top",
-    "height": 24,
-    //"bar_id": "bar-0", // for toggle bar
-    //"ipc": true, // for toggle bar
-    "spacing": 1, // Gaps between modules (default 14)
+  //"layer": "top",	
+  "position": "top",
+    "height": 27,
+    "margin-top": 4,
+    "margin-left": 8,
+    "margin-right": 8,
+    "spacing": 7, // 15 "Gaps" between modules
 
+    // Modules
+    "modules-left": ["sway/workspaces", "custom/layout"],
+    "modules-center": ["custom/cmus"],
+    "modules-right": ["sway/scratchpad", "pulseaudio", "battery", "network", "clock"],
 
     "modules-left": ["sway/workspaces", "custom/layout", "sway/window"],
     //"modules-center": [],
     "modules-right": ["custom/cmus", "sway/scratchpad", "custom/separator", "pulseaudio", "custom/separator", "battery", "custom/separator", "clock"],
 
     "custom/cmus": {
-	//"format": "<span color=\"#DBBC7F\">{}</span>",
-	"format": "{}",
-	//"max-length": 15,
-	"interval": 1,
-	"exec": "~/.config/waybar/cmus.sh",
-	"exec-if": "pgrep -x cmus",
-	"on-click-middle": "cmus-remote -u",
-    "on-scroll-up": "cmus-remote -v +5%",
-    "on-scroll-down":"cmus-remote -v -5%",
-    "on-click": "cmus-remote -r",
-    "on-click-right": "cmus-remote -n",
-    "tooltip": false,
-	"escape": true                     //handle markup entities
-},
+      //"format": "<span color=\"#DBBC7F\">{}</span>",
+      "format": "{}",
+      //"max-length": 15,
+      "interval": 1,
+      "exec": "~/.config/waybar/cmus.sh",
+      "exec-if": "pgrep -x cmus",
+      "on-click-middle": "cmus-remote -u",
+      "on-scroll-up": "cmus-remote -v +5%",
+      "on-scroll-down":"cmus-remote -v -5%",
+      "on-click": "cmus-remote -r",
+      "on-click-right": "cmus-remote -n",
+      "tooltip": false,
+      "escape": true      //handle markup entities
+    },
 
-"custom/separator": {
-    "format": "|",
-    "interval": "once",
-    "tooltip": false
-},
+    "custom/separator": {
+      "format": "|",
+      "interval": "once",
+      "tooltip": false
+    },
 
     "custom/layout": {
-        "format": "<span color=\"#D699B6\">{} </span>",
-        "interval": 1,
-        "exec": "~/.config/waybar/sway-layout.sh"
+      "format": "<span color=\"#D699B6\">{}</span>",
+      "interval": 1,
+      "tooltip": false,
+      "exec": "~/.config/waybar/sway-layout.sh"
     },
 
-	"sway/window": {
-    	"format": "{}",
-    	"max-length": 150
-},
+    "sway/window": {
+      "format": "{}",
+      "max-length": 150
+    },
 
     "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["  "],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
+      "format": "{icon} {count}",
+      "show-empty": false,
+      "format-icons": [" "],
+      "tooltip": false,
     },
 
-
     "tray": {
-        "icon-size": 18,
-        "spacing": 15
-},
+      "icon-size": 18,
+      "spacing": 15
+    },
 
     "clock": {
-        "interval": 1,
-        "format": "{:<span color=\"#D699B6\"></span> %a, %R }",
-        "timezone": "America/Sao_Paulo",
-        "tooltip-format": "\n<span size='11pt' font='JetBrainsMono NF'>{calendar}</span>",
-        "on-click": "foot calc",
-        //"format-alt": "{:%A, %d de %B }",
-        "calendar": {
-                    "mode"          : "month",
-                    "mode-mon-col"  : 3,
-                    "weeks-pos"     : "none",
-                    "on-scroll"     : 1,
-                    "on-click-right": "mode",
-                    "format": {
-                              "months":     "<span color='#ffead3'><b>{}</b></span>",
-                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                              "today":      "<span color='#E68183'><b><u>{}</u></b></span>"
-                              }
-                    },
-                              "actions":  {
-                                            "on-click-right": "mode",
-                                            "on-click-forward": "tz_up",
-                                            "on-click-backward": "tz_down",
-                                            "on-scroll-up": "shift_up",
-                                            "on-scroll-down": "shift_down"
-                    }
+      "interval": 1,
+      "format": "{:<span color=\"#D699B6\"></span> %a, %R}",
+      "timezone": "America/Sao_Paulo",
+      "tooltip-format": "\n<span size='11pt' font='JetBrainsMono NF'>{calendar}</span>",
+      //"on-click": "foot cal",
+      "format-alt": "{:%A, %d de %B }",
+      "calendar": {
+        "mode"          : "month",
+        "mode-mon-col"  : 3,
+        "weeks-pos"     : "none",
+        "on-scroll"     : 1,
+        "on-click-right": "mode",
+        "format": {
+          "months":     "<span color='#ffead3'><b>{}</b></span>",
+          "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+          "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+          "today":      "<span color='#E68183'><b><u>{}</u></b></span>"
+        }
+      },
+      "actions":  {
+        "on-click-right": "mode",
+        "on-click-forward": "tz_up",
+        "on-click-backward": "tz_down",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down"
+      }
     },
 
     "battery": {
-        "states": {
-            "good": 97,
-            "warning": 40,
-            "critical": 35
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": "<span color=\"#D699B6\"></span> {capacity}%",
-        //"format-plugged": "<span color=\"#D699B6\"> </span>{capacity}%",
-        "format-plugged": "<span color=\"#D699B6\">  </span>{capacity}%",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": [
+      "states": {
+        "good": 97,
+        "warning": 40,
+        "critical": 35
+      },
+      "format": "{icon} {capacity}%",
+      "format-charging": "<span color=\"#D699B6\"></span> {capacity}%",
+      "format-plugged": "<span color=\"#D699B6\">  </span>{capacity}%",
+      "format-alt": "{time} {icon}",
+      // "format-good": "", // An empty format will hide the module
+      // "format-full": "",
+      "format-icons": [
         "<span color=\"#D699B6\"> </span>", 
         "<span color=\"#D699B6\"> </span>", 
         "<span color=\"#D699B6\"> </span>", 
         "<span color=\"#D699B6\"> </span>", 
         "<span color=\"#D699B6\"> </span>"
-        ]
+      ]
     },
 
 
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "<span color=\"#D699B6\"> </span>{essid}",
-        "format-ethernet": "{ipaddr}/{cidr}",
-        "tooltip-format": "{ifname} via {gwaddr}",
-        "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "󰖪 Offline",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+      // "interface": "wlp2*", // (Optional) To force the use of this interface
+      "format-wifi": "<span color=\"#D699B6\"> </span>{essid}",
+      "format-ethernet": "{ipaddr}/{cidr}",
+      "tooltip-format": "{ifname} via {gwaddr}",
+      "format-linked": "{ifname} (No IP)",
+      "format-disconnected": "󰖪 Offline",
+      "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
-        //"format-source": "{volume}% ",
-        //"format-source-muted": "",
-        "scroll-step": 5, // %, can be a float
-        "format": "{icon} {volume}%",
-        "format-muted": "<span color=\"#E68183\">󰖁 muted</span>",
-        "format-icons": {
-            "headphone": ["<span color=\"#D699B6\"></span>"],
-            "default": ["<span color=\"#D699B6\">󰕾</span>"]
-        },
-        "on-click": "pactl set-sink-mute 0 toggle",
-        "on-click-middle": "pavucontrol",
-        "on-click-right": "foot cmus"
+      //"format-source": "{volume}% ",
+      //"format-source-muted": "",
+      "tooltip": false,
+      "scroll-step": 5, // %, can be a float
+      "format": "{icon} {volume}%",
+      "format-muted": "󰖁 mute",
+      "format-icons": {
+        "headphone": ["<span color=\"#D699B6\"> </span>"],
+        "default": ["<span color=\"#D699B6\"> 󰕾</span>"]
+      },
+      "on-click": "pactl set-sink-mute 0 toggle",
+      "on-click-middle": "pavucontrol",
+      "on-click-right": "foot cmus"
     },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    }
+    "escape": true,
+}
 }

@@ -1,94 +1,113 @@
+/* Global */
 * {
-    font-family: "JetBrainsMono NF";
-    font-size: 12px;
+  font-family: "JetBrainsMono NF";
+  font-size: 12px;
+  border-radius: 4px;
 }
 
 /* Color scheme */
 @import url("./everforest.css");
 
+/* window title */
+#window {
+  color: @background;
+  background-color: @wp;
+  padding: 0px 10px 0px 10px;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+  color: transparent;
+}
+
+window#waybar.empty {
+  background-color: @background;
+}
+
 window#waybar { 
-    background-color: @wp; 
-    color: @foreground;    
-    border-bottom: 0px solid @background;
-}
-
-.modules-left {
-	background-color: @background;
-	padding: 0px 0px 0px 0px;
-}
-
-.modules-right {
-	background-color: @background;
-	padding: 0px 0px 0px 0px;
+  background-color: @background; 
+  color: @foreground;    
+  border-bottom: 0px solid @background;
 }
 
 #scratchpad {
-	background-color: @background;
-	color: @scratch;
-	padding: 0px 0px 0px 0px;
+  background-color: @background;
+  color: @scratch;
 }
 
+/* workspaces */
 #workspaces {
-    margin: 0 0px;
-    color: @background;
-	padding: 0px 0px 0px 0px;
+  color: @background;
+}
+
+#workspaces button {
+  transition: none;
+  color: @foreground;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px;
+  border-radius: 0px;
+  min-width: 20px;
+}
+
+#workspaces button.focused { 
+  background-color: @wp;
+  color: @background;
+}
+
+#workspaces button:hover {
+  color: @hover;
 }
 
 #workspaces button.urgent {
     background-color: @hl;
 }
 
-#workspaces button {
-	color: @foreground;
-    padding: 0 0px 0px 0px;
-    margin: 0px 0;
-    border-radius: 0px;
+/* Misc */
+
+#clock {
+  margin: 0px 4px 0px 0px;
 }
 
-#workspaces button.focused { 
-	padding: 0px 0px 0px 0px; 
-	background-color: @wp;
-	color: @background;
+#tray,
+#network,
+#pulseudio,
+#battery {
+  background-color: @background;
+  color: @foreground;
+  padding: 5px;
 }
 
-#workspaces button:hover {
-    color: #98c8c2;
+#pulseaudio {
+  background-color: @background;
+  color: @foreground;
+  padding: 5px;
+}
+#pulseaudio.muted {
+  background-color: @background;
+  color: @hl;
+  padding: 5px;
 }
 
-#window {
-	 color: @background;
-	 background-color: @wp;
-     padding: 0px 10px 0px 10px;
+#network.disconnected, 
+#battery.critical, 
+#workspaces button.urgent {
+  color: @hl;
 }
 
-window#waybar.empty #window {
-	background-color: transparent;
-	color: transparent;
+tooltip,
+#clock.calendar,
+#clock tooltip,
+#clock > tooltip,
+#clock {
+  background: @background;
+  color: @foreground;
+  padding: 5px;
 }
 
-window#waybar.empty {
-	background-color: @background;
-}
-
-#network, #pulseudio, #battery, #clock {
-    padding: 0px 0px 0px 0px;
-	margin: 0px 0px 0px 0px;
-  }
-
-#tray{
-   padding: 0px 8px 0px 5px;
-   margin: 0px 5px 0px 5px;
-}
-
-#battery.critical {
-   color: @hl;
-}
-
-#network.disconnected {
-    color: @hl;
-}
+/* Custom modules */
 
 #custom-separator {
+  background-color: @sep;
   color: @background;
   margin: 0 5px;
 }
@@ -98,10 +117,8 @@ window#waybar.empty {
   color: @cmus;
 }
 
-tooltip,
-#clock.calendar,
-#clock tooltip,
-#clock > tooltip,
-#clock {
-    background: @background;
+#custom-layout {
+  background-color: @background;
+  color: @icon;
 }
+
