@@ -37,16 +37,21 @@ window#waybar {
 
 /* workspaces */
 #workspaces {
-  color: @background;
+    margin: 0 0px;
+    color: @background;
+	padding: 0px 0px 0px 0px;
+}
+
+#workspaces button.urgent {
+    background-color: @hl;
 }
 
 #workspaces button {
   transition: none;
   color: @foreground;
-  padding: 0px 0px 0px 0px;
+  padding: 3px 0px 0px 0px;
   margin: 0px 0px;
   border-radius: 0px;
-  min-width: 20px;
 }
 
 #workspaces button.focused { 

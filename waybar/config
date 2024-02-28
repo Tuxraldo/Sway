@@ -12,10 +12,6 @@
     "modules-center": ["custom/cmus"],
     "modules-right": ["sway/scratchpad", "pulseaudio", "battery", "network", "clock"],
 
-    "modules-left": ["sway/workspaces", "custom/layout", "sway/window"],
-    //"modules-center": [],
-    "modules-right": ["custom/cmus", "sway/scratchpad", "custom/separator", "pulseaudio", "custom/separator", "battery", "custom/separator", "clock"],
-
     "custom/cmus": {
       //"format": "<span color=\"#DBBC7F\">{}</span>",
       "format": "{}",
